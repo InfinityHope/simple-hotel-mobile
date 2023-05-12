@@ -1,9 +1,9 @@
-import { SafeAreaView, View } from 'react-native/types';
+import { Text, View } from 'react-native';
 
 const HomeScreen = (): JSX.Element => (
-  <SafeAreaView>
-    <View />
-  </SafeAreaView>
+  <View style={{ flex: 1 }}>
+    <Text>fasf</Text>
+  </View>
 );
 
 export default HomeScreen;

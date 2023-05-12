@@ -7,15 +7,15 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const MainNavigator = () => (
   <NavigationContainer>
     <Stack.Navigator initialRouteName="Auth">
-      <Stack.Screen name="Auth" component={AuthScreen} />
+      <Stack.Screen options={{ headerShown: false }} name="Auth" component={AuthScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );
 
-type RootStackParamList = {
-  Auth: undefined
-  Home: undefined
+export type RootStackParamList = {
+  Auth: undefined,
+  Home: undefined,
 };
 
 export default MainNavigator;

@@ -5,13 +5,17 @@ import {
 
 interface IProps {
   title: string
+  width?: string | number
+  fontWeight?: '400' | '500' | '700'
   onPress?: () => void
 }
 
-const CustomButton: FC<IProps> = ({ title, onPress }): JSX.Element => (
+const CustomButton: FC<IProps> = ({
+  title, onPress, width = '100%', fontWeight = '400'
+}): JSX.Element => (
   <Pressable onPress={onPress}>
     <View style={styles.btnStyle}>
-      <Text style={styles.textStyle}>{title}</Text>
+      <Text style={[styles.textStyle, { width, fontWeight }]}>{title}</Text>
     </View>
   </Pressable>
 );
@@ -19,16 +23,15 @@ const CustomButton: FC<IProps> = ({ title, onPress }): JSX.Element => (
 const styles = StyleSheet.create({
   btnStyle: {
     padding: 7,
-    width: 343,
     height: 50,
     backgroundColor: '#5AC8FA',
     borderRadius: 10,
     justifyContent: 'center',
-    alignItems: 'center',
   },
   textStyle: {
     color: 'white',
     fontSize: 14,
+    textAlign: 'center',
     fontWeight: '400'
   }
 });
