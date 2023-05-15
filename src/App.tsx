@@ -6,18 +6,20 @@
  */
 
 import React from 'react';
-import { Provider } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { store } from './redux/store';
 import MainNavigator from './navigation/MainNavigation';
+import { useAppSelector } from './hooks/useAppSelector';
+import { AuthScreen } from './screens';
 
 function App(): JSX.Element {
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
+
   return (
-    <Provider store={store}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <MainNavigator />
-      </SafeAreaView>
-    </Provider>
+    <SafeAreaView style={{ flex: 1 }}>
+      {
+        isAuth ? <MainNavigator /> : <AuthScreen />
+      }
+    </SafeAreaView>
   );
 }
 

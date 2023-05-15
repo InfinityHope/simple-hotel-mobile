@@ -11,7 +11,7 @@ import { useAppDispatch } from '../hooks/useAppDispatch';
 import { setSearchParams } from '../redux/reducers/SearchParams.slice';
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 
-export const SearchForm = () => {
+export const SearchForm = (): JSX.Element => {
   const { control, handleSubmit } = useForm<ISearchParams>({
     defaultValues: {
       location: 'Москва',

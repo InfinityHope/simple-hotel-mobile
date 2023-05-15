@@ -6,7 +6,7 @@ interface IRatingBar {
   stars: number
 }
 
-export const RatingBar: FC<IRatingBar> = ({ stars }) => (
+export const RatingBar: FC<IRatingBar> = ({ stars }): JSX.Element => (
   <View style={{ flexDirection: 'row', gap: 9 }}>
     {
         [...Array(stars || 5)].map((star, index) => <Star key={index} />)

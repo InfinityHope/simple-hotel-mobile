@@ -1,13 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { retrieveData, storeData } from '../../../helpers/asyncStorage';
 import { setAuth } from '../../reducers/Auth.slice';
-import { getDataFromStorage, setDataToStorage } from './auth-saga.action';
+import { setDataToStorage } from './auth-saga.action';
 import { IAuth } from '../../../interfaces/Auth.interface';
 
-function* checkAuthWorker() {
+export function* checkAuthWorker() {
   const authData: IAuth = yield call(() => retrieveData('authData'));
   if (authData) {
-    yield put(setAuth(authData.login));
+    yield put(setAuth());
   }
 }
 
@@ -21,6 +21,5 @@ function* setAuthWorker(action: { type: string, payload: boolean }) {
 }
 
 export function* authWatcher() {
-  yield takeEvery(getDataFromStorage().type, checkAuthWorker);
   yield takeEvery(setDataToStorage().type, setAuthWorker);
 }

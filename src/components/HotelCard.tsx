@@ -9,7 +9,7 @@ import { truncateString } from '../helpers/truncateString';
 
 export const HotelCard: FC<IHotel> = ({
   hotelName, priceAvg, stars
-}) => (
+}): JSX.Element => (
   <View style={styles.cardWrapper}>
     <View style={styles.cardTop}>
       <HotelIcon />
@@ -29,7 +29,7 @@ export const HotelCard: FC<IHotel> = ({
       <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
         <Text style={cardPriceLeft}>Цена за ночь: </Text>
         <Text style={cardPriceRight}>
-          {priceAvg}
+          {priceAvg.toFixed(0)}
           {' '}
           ₽
         </Text>

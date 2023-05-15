@@ -4,7 +4,7 @@ import { HotelCard } from './HotelCard';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 
-export const HotelList = () => {
+export const HotelList = (): JSX.Element => {
   const { hotels, isLoading } = useAppSelector((state) => state.hotels);
   const searchParams = useAppSelector((state) => state.searchParams);
   const dispatch = useAppDispatch();

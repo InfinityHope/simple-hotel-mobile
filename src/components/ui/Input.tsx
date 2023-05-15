@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontWeight: '400',
     fontSize: 14,
-    lineHeight: 20,
+    lineHeight: 16,
   }
 });
 

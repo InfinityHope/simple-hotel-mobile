@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -10,11 +10,7 @@ import { useAppDispatch } from '../hooks/useAppDispatch';
 import { setAuth } from '../redux/reducers/Auth.slice';
 import { setDataToStorage } from '../redux/sagas/auth-saga/auth-saga.action';
 
-interface IProps {
-  onLogin: () => void
-}
-
-export const AuthForm: FC<IProps> = ({ onLogin }) => {
+export const AuthForm = (): JSX.Element => {
   const { control, handleSubmit } = useForm<IUser>({
     mode: 'onBlur'
   });
@@ -22,9 +18,8 @@ export const AuthForm: FC<IProps> = ({ onLogin }) => {
 
   const onSubmit: SubmitHandler<IUser> = (data) => {
     if (data.login && data.password) {
-      dispatch(setAuth(data.login));
-      dispatch(setDataToStorage({ login: data.login, isAuth: true }));
-      onLogin();
+      dispatch(setAuth());
+      dispatch(setDataToStorage(true));
     }
   };
 

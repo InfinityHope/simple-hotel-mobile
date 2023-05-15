@@ -13,6 +13,6 @@ export const convertLongDate = (date: string) => new Date(date).toLocaleDateStri
 
 export const addDays = (days: number, date: string) => {
   const newDate = new Date(date);
-  newDate.setDate(newDate.getDate() + days - 1);
+  newDate.setDate(newDate.getDate() + days);
   return convertShortDate(newDate);
 };

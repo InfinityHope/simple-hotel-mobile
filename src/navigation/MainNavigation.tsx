@@ -1,21 +1,63 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AuthScreen, HomeScreen } from '../screens';
+import {
+  Pressable, StyleSheet, Text, View
+} from 'react-native';
+import { HomeScreen } from '../screens';
+import LogOut from '../assets/logOut.svg';
+import { useAppDispatch } from '../hooks/useAppDispatch';
+import { logOut } from '../redux/reducers/Auth.slice';
+
+export type RootStackParamList = {
+  Home: undefined,
+};
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const MainNavigator = () => (
-  <NavigationContainer>
-    <Stack.Navigator initialRouteName="Auth">
-      <Stack.Screen options={{ headerShown: false }} name="Auth" component={AuthScreen} />
-      <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
-    </Stack.Navigator>
-  </NavigationContainer>
-);
+const MainNavigator = () => {
+  const dispatch = useAppDispatch();
 
-export type RootStackParamList = {
-  Auth: undefined,
-  Home: undefined,
+  const logoutHandler = () => {
+    dispatch(logOut());
+  };
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{
+            headerStyle: { backgroundColor: '#F4F4F4' },
+            headerLeft: () => (
+              <View style={styles.header}>
+                <Text style={styles.headerTitle}>Simple Hotel Check</Text>
+              </View>
+            ),
+            headerRight: () => (
+              <Pressable onPress={logoutHandler} style={styles.header}>
+                <LogOut />
+              </Pressable>
+            ),
+            title: ''
+          }}
+          name="Home"
+          component={HomeScreen}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  headerTitle: {
+    fontWeight: '700',
+    fontSize: 24,
+    lineHeight: 29
+  }
+});
 
 export default MainNavigator;
