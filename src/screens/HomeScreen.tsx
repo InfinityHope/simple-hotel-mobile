@@ -4,15 +4,15 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { SearchForm } from '../components/SearchForm';
 import { HotelList } from '../components/HotelList';
 import { useAppDispatch } from '../hooks/useAppDispatch';
-import { useAppSelector } from '../hooks/useAppSelector';
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 import { RootStackParamList } from '../navigation/MainNavigation';
+import { useSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen = ({ navigation } : HomeScreenProps): JSX.Element => {
   const dispatch = useAppDispatch();
-  const searchParams = useAppSelector((state) => state.searchParams);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     dispatch(fetchHotels(searchParams));

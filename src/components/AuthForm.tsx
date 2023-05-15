@@ -7,7 +7,7 @@ import Button from './ui/Button';
 import { IUser } from '../interfaces/Auth.interface';
 import { emailRegex, passRegex } from '../constants/regex.constants';
 import { useAppDispatch } from '../hooks/useAppDispatch';
-import { setAuth } from '../redux/reducers/Auth.slice';
+import { setAuth } from '../redux/reducers/auth-reducer/Auth.slice';
 import { setDataToStorage } from '../redux/sagas/auth-saga/auth-saga.action';
 
 export const AuthForm = (): JSX.Element => {

@@ -6,7 +6,7 @@ import {
 import { HomeScreen } from '../screens';
 import LogOut from '../assets/logOut.svg';
 import { useAppDispatch } from '../hooks/useAppDispatch';
-import { logOut } from '../redux/reducers/Auth.slice';
+import { logOut } from '../redux/reducers/auth-reducer/Auth.slice';
 
 export type RootStackParamList = {
   Home: undefined,

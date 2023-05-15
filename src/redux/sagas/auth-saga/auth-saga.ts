@@ -1,12 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { retrieveData, storeData } from '../../../helpers/asyncStorage';
-import { setAuth } from '../../reducers/Auth.slice';
+import { setAuth } from '../../reducers/auth-reducer/Auth.slice';
 import { setDataToStorage } from './auth-saga.action';
-import { IAuth } from '../../../interfaces/Auth.interface';
 
 export function* checkAuthWorker() {
-  const authData: IAuth = yield call(() => retrieveData('authData'));
-  if (authData) {
+  const isAuth: boolean = yield call(() => retrieveData('authData'));
+  if (isAuth) {
     yield put(setAuth());
   }
 }

@@ -8,11 +8,11 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MainNavigator from './navigation/MainNavigation';
-import { useAppSelector } from './hooks/useAppSelector';
 import { AuthScreen } from './screens';
+import { useIsAuth } from './redux/reducers/auth-reducer/Auth.selector';
 
 function App(): JSX.Element {
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
+  const isAuth = useIsAuth();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

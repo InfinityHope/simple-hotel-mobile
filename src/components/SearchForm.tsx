@@ -8,7 +8,7 @@ import Clock from '../assets/clock.svg';
 import { ISearchParams } from '../interfaces/SearchParams';
 import { convertShortDate } from '../helpers/date';
 import { useAppDispatch } from '../hooks/useAppDispatch';
-import { setSearchParams } from '../redux/reducers/SearchParams.slice';
+import { setSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.slice';
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 
 export const SearchForm = (): JSX.Element => {
