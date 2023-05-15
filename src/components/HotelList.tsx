@@ -1,6 +1,9 @@
 import { ActivityIndicator, FlatList } from 'react-native';
+
 import { HotelCard } from './HotelCard';
+
 import { useAppDispatch } from '../hooks/useAppDispatch';
+
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 import { useSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
 import { useHotels, useIsLoadingHotels } from '../redux/reducers/hotel-reducer/Hotel.selector';

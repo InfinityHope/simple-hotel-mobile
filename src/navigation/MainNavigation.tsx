@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   Pressable, StyleSheet, Text, View
 } from 'react-native';
+
 import { HomeScreen } from '../screens';
 import LogOut from '../assets/logOut.svg';
 import { useAppDispatch } from '../hooks/useAppDispatch';

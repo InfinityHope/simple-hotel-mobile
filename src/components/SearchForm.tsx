@@ -1,12 +1,15 @@
-import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { SubmitHandler, useForm } from 'react-hook-form';
+
 import Input from './ui/Input';
 import CustomButton from './ui/Button';
+
 import Calendar from '../assets/calendar.svg';
 import Clock from '../assets/clock.svg';
+
 import { ISearchParams } from '../interfaces/SearchParams';
 import { convertShortDate } from '../helpers/date';
+
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { setSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.slice';
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';

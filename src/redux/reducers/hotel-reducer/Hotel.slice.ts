@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
 import { IHotel } from '../../../interfaces/Hotel.interface';
 
 interface IState {

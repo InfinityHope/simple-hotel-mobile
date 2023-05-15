@@ -1,11 +1,14 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
 import HotelIcon from '../assets/hotel-item.svg';
 import FavoriteIcon from '../assets/favorite.svg';
 import { RatingBar } from './RatingBar';
+
 import { getFontStyles } from '../helpers/getFontStyles';
-import { IHotel } from '../interfaces/Hotel.interface';
 import { truncateString } from '../helpers/truncateString';
+
+import { IHotel } from '../interfaces/Hotel.interface';
 
 export const HotelCard: FC<IHotel> = ({
   hotelName, priceAvg, stars
