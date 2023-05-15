@@ -8,7 +8,7 @@ const MainNavigator = () => (
   <NavigationContainer>
     <Stack.Navigator initialRouteName="Auth">
       <Stack.Screen options={{ headerShown: false }} name="Auth" component={AuthScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );

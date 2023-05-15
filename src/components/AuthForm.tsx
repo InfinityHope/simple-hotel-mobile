@@ -4,10 +4,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Input from './ui/Input';
 import Button from './ui/Button';
-import { IUser } from '../interfaces/User.interface';
+import { IUser } from '../interfaces/Auth.interface';
 import { emailRegex, passRegex } from '../constants/regex.constants';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { setAuth } from '../redux/reducers/Auth.slice';
+import { setDataToStorage } from '../redux/sagas/auth-saga/auth-saga.action';
 
 interface IProps {
   onLogin: () => void
@@ -21,8 +22,8 @@ export const AuthForm: FC<IProps> = ({ onLogin }) => {
 
   const onSubmit: SubmitHandler<IUser> = (data) => {
     if (data.login && data.password) {
-      dispatch(setAuth);
-      console.log(data);
+      dispatch(setAuth(data.login));
+      dispatch(setDataToStorage({ login: data.login, isAuth: true }));
       onLogin();
     }
   };

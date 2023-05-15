@@ -21,7 +21,7 @@ const Input:FC<IProps> = ({
     rules={{ required, minLength, pattern }}
     render={({ field: { value, onChange }, fieldState: { invalid } }) => (
       <TextInput
-        value={value}
+        value={value?.toString()}
         onChangeText={(value) => onChange(value)}
         placeholder={placeholder}
         style={[styles.input, { borderColor: invalid ? 'red' : borderColor, width }]}

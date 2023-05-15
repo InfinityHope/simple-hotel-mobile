@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import {
-  Pressable, StyleSheet, Text, View
+  StyleSheet, Text, TouchableOpacity, View
 } from 'react-native';
 
 interface IProps {
@@ -13,11 +13,11 @@ interface IProps {
 const CustomButton: FC<IProps> = ({
   title, onPress, width = '100%', fontWeight = '400'
 }): JSX.Element => (
-  <Pressable onPress={onPress}>
+  <TouchableOpacity onPress={onPress}>
     <View style={styles.btnStyle}>
       <Text style={[styles.textStyle, { width, fontWeight }]}>{title}</Text>
     </View>
-  </Pressable>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
