@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { View } from 'react-native';
 import { SubmitHandler, useForm } from 'react-hook-form';
+
 import Input from './ui/Input';
 import Button from './ui/Button';
 import { IUser } from '../interfaces/User.interface';
@@ -19,9 +20,9 @@ export const AuthForm: FC<IProps> = ({ onLogin }) => {
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IUser> = (data) => {
-    console.log('sf');
     if (data.login && data.password) {
       dispatch(setAuth);
+      console.log(data);
       onLogin();
     }
   };
@@ -29,6 +30,7 @@ export const AuthForm: FC<IProps> = ({ onLogin }) => {
   return (
     <View style={{ gap: 16 }}>
       <Input required pattern={emailRegex} placeholder="Логин" name="login" control={control} />
+
       <Input
         pattern={passRegex}
         required
@@ -37,8 +39,8 @@ export const AuthForm: FC<IProps> = ({ onLogin }) => {
         name="password"
         control={control}
       />
-      <Button onPress={handleSubmit(onSubmit)} fontWeight="700" title="Войти" />
 
+      <Button onPress={handleSubmit(onSubmit)} fontWeight="700" title="Войти" />
     </View>
   );
 };

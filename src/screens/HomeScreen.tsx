@@ -1,8 +1,9 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import { DataPicker } from '../components/ui/DataPicker';
 
 const HomeScreen = (): JSX.Element => (
   <View style={{ flex: 1 }}>
-    <Text>fasf</Text>
+    <DataPicker />
   </View>
 );
 
