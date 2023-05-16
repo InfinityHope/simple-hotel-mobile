@@ -1,21 +1,25 @@
 import { FC } from 'react';
 import { Control, Controller } from 'react-hook-form';
-import { StyleSheet, TextInput } from 'react-native';
+import {
+  KeyboardType,
+  StyleProp, StyleSheet, TextInput, TextStyle
+} from 'react-native';
 
 interface IProps {
-  borderColor?: string
-  width?: string | number
+  additionalStyle?: StyleProp<TextStyle>
   placeholder?: string
   name: string
-  control: Control<any, any>
+  control: Control<any, unknown>
   minLength?: number
   isRequired?: boolean
+  isSecurity?:boolean
   pattern?: RegExp
+  type?: KeyboardType
 }
 
 const Input:FC<IProps> = ({
-  borderColor = '#5AC8FA', width = '100%', placeholder,
-  pattern, minLength, control, isRequired, name,
+  additionalStyle, placeholder, type,
+  pattern, minLength, control, isRequired, name, isSecurity
 }) => (
   <Controller
     rules={{
@@ -25,10 +29,14 @@ const Input:FC<IProps> = ({
     }}
     render={({ field: { value, onChange }, fieldState: { invalid } }) => (
       <TextInput
+        keyboardType={type}
+        secureTextEntry={isSecurity}
         value={value?.toString()}
         onChangeText={(value) => onChange(value)}
         placeholder={placeholder}
-        style={[styles.input, { borderColor: invalid ? 'red' : borderColor, width }]}
+        style={[styles.input, {
+          borderColor: invalid ? 'red' : '#5AC8FA'
+        }, additionalStyle]}
       />
     )}
     name={name}

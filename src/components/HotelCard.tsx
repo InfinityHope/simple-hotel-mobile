@@ -10,45 +10,57 @@ import { IHotel } from '../interfaces/Hotel.interface';
 
 import HotelIcon from '../assets/hotel-item.svg';
 import FavoriteIcon from '../assets/favorite.svg';
+import { useAppDispatch } from '../hooks/useAppDispatch';
+import { setFavorite } from '../redux/reducers/hotel-reducer/Hotel.slice';
 
 export const HotelCard: FC<IHotel> = ({
-  hotelName, priceAvg, stars
-}) => (
-  <View style={styles.cardWrapper}>
-    <View style={styles.cardTop}>
-      <HotelIcon />
+  hotelId, hotelName, priceAvg, stars, isFavorite
+}) => {
+  const dispatch = useAppDispatch();
 
-      <View style={{ justifyContent: 'space-between', width: '75%' }}>
+  const favoriteHandler = () => {
+    dispatch(setFavorite(hotelId));
+  };
 
-        <View style={styles.cardTopHeader}>
-          <Text style={cardTitle}>{truncateString(hotelName, 25)}</Text>
-          <FavoriteIcon />
+  return (
+    <View style={styles.cardWrapper}>
+      <View style={styles.cardTop}>
+        <HotelIcon />
+
+        <View style={{ justifyContent: 'space-between', width: '75%' }}>
+
+          <View style={styles.cardTopHeader}>
+            <Text style={cardTitle}>{truncateString(hotelName, 20)}</Text>
+
+            <FavoriteIcon onPress={favoriteHandler} fill={isFavorite ? 'red' : '#fff'} />
+          </View>
+
+          <View style={styles.cardTopFooter}>
+            <RatingBar stars={stars} />
+
+            <Text style={cardRoomsText}>Осталось 3 комнаты</Text>
+          </View>
+
         </View>
+      </View>
 
-        <View style={styles.cardTopFooter}>
-          <RatingBar stars={stars} />
-          <Text style={cardRoomsText}>Осталось 3 комнаты</Text>
+      <View style={{ height: 1, width: '100%', backgroundColor: '#F4F4F4' }} />
+
+      <View style={styles.cardBottom}>
+        <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
+
+          <Text style={cardPriceLeft}>Цена за ночь: </Text>
+
+          <Text style={cardPriceRight}>
+            {priceAvg.toFixed(0)}
+            {' '}
+            ₽
+          </Text>
         </View>
-
       </View>
     </View>
-
-    <View style={{ height: 1, width: '100%', backgroundColor: '#F4F4F4' }} />
-
-    <View style={styles.cardBottom}>
-      <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
-
-        <Text style={cardPriceLeft}>Цена за ночь: </Text>
-
-        <Text style={cardPriceRight}>
-          {priceAvg.toFixed(0)}
-          {' '}
-          ₽
-        </Text>
-      </View>
-    </View>
-  </View>
-);
+  );
+};
 
 const styles = StyleSheet.create({
   cardWrapper: {

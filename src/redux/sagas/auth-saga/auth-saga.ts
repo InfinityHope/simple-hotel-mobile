@@ -16,7 +16,7 @@ function* setAuthWorker(action: { type: string, payload: boolean }) {
   const isAuth = action.payload;
   try {
     yield call(() => storeData('authData', isAuth));
-  } catch (error) {
+  } catch (error: unknown) {
     console.log(error);
   }
 }
@@ -24,7 +24,7 @@ function* setAuthWorker(action: { type: string, payload: boolean }) {
 function* removeAuthWorker() {
   try {
     yield call(() => removeData('authData'));
-  } catch (error) {
+  } catch (error: unknown) {
     console.log(error);
   }
 }

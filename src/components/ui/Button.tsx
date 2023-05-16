@@ -2,20 +2,20 @@ import React, { FC } from 'react';
 import {
   StyleSheet, Text, TouchableOpacity, View
 } from 'react-native';
+import { IButtonStyles } from '../../interfaces/Styles.interface';
 
 interface IProps {
   title: string
-  width?: string | number
-  fontWeight?: '400' | '700'
-  onPress?: () => void
+  onPress?: () => void,
+  additionalStyles?: IButtonStyles
 }
 
 const CustomButton: FC<IProps> = ({
-  title, onPress, width = '100%', fontWeight = '400'
+  title, onPress, additionalStyles
 }) => (
   <TouchableOpacity onPress={onPress}>
-    <View style={styles.btnStyle}>
-      <Text style={[styles.textStyle, { width, fontWeight }]}>{title}</Text>
+    <View style={[styles.btnStyle, additionalStyles?.view]}>
+      <Text style={[styles.textStyle, additionalStyles?.text]}>{title}</Text>
     </View>
   </TouchableOpacity>
 );

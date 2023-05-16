@@ -35,12 +35,29 @@ export const SearchForm = () => {
 
       <View style={styles.searchFormInputGroup}>
         <View style={styles.inputSection}>
-          <Input width={150} name="checkIn" placeholder="Дата" control={control} />
+          <Input
+            additionalStyle={{
+              width: 150
+            }}
+            name="checkIn"
+            placeholder="Дата"
+            control={control}
+          />
+
           <Calendar style={styles.inputIcon} />
         </View>
 
         <View style={styles.inputSection}>
-          <Input width={150} name="nights" placeholder="Кол-во дней" control={control} />
+          <Input
+            additionalStyle={{
+              width: 150
+            }}
+            type="numeric"
+            name="nights"
+            placeholder="Кол-во дней"
+            control={control}
+          />
+
           <Clock style={styles.inputIcon} />
         </View>
       </View>
