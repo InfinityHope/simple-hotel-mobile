@@ -4,7 +4,7 @@ import {
 import { AuthForm } from '../components/AuthForm';
 import { getFontStyles } from '../helpers/getFontStyles';
 
-const AuthScreen = (): JSX.Element => (
+const AuthScreen = () => (
   <ImageBackground
     imageStyle={{ opacity: 0.6 }}
     source={require('../assets/1503970.png')}
@@ -16,6 +16,7 @@ const AuthScreen = (): JSX.Element => (
 
         <Text style={subHeading}>Simple Hotel Check</Text>
       </View>
+
       <AuthForm />
     </View>
   </ImageBackground>

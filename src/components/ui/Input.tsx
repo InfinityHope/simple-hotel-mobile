@@ -9,17 +9,17 @@ interface IProps {
   name: string
   control: Control<any, any>
   minLength?: number
-  required?: boolean
+  isRequired?: boolean
   pattern?: RegExp
 }
 
 const Input:FC<IProps> = ({
   borderColor = '#5AC8FA', width = '100%', placeholder,
-  pattern, minLength, control, required, name,
-}): JSX.Element => (
+  pattern, minLength, control, isRequired, name,
+}) => (
   <Controller
     rules={{
-      required,
+      required: isRequired,
       minLength,
       pattern
     }}

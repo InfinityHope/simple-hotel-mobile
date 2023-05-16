@@ -13,7 +13,7 @@ import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 import Calendar from '../assets/calendar.svg';
 import Clock from '../assets/clock.svg';
 
-export const SearchForm = (): JSX.Element => {
+export const SearchForm = () => {
   const { control, handleSubmit } = useForm<ISearchParams>({
     defaultValues: {
       location: 'Москва',

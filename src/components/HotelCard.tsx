@@ -13,10 +13,11 @@ import FavoriteIcon from '../assets/favorite.svg';
 
 export const HotelCard: FC<IHotel> = ({
   hotelName, priceAvg, stars
-}): JSX.Element => (
+}) => (
   <View style={styles.cardWrapper}>
     <View style={styles.cardTop}>
       <HotelIcon />
+
       <View style={{ justifyContent: 'space-between', width: '75%' }}>
 
         <View style={styles.cardTopHeader}>
@@ -31,7 +32,9 @@ export const HotelCard: FC<IHotel> = ({
 
       </View>
     </View>
+
     <View style={{ height: 1, width: '100%', backgroundColor: '#F4F4F4' }} />
+
     <View style={styles.cardBottom}>
       <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
 

@@ -12,7 +12,7 @@ interface IProps {
 
 const CustomButton: FC<IProps> = ({
   title, onPress, width = '100%', fontWeight = '400'
-}): JSX.Element => (
+}) => (
   <TouchableOpacity onPress={onPress}>
     <View style={styles.btnStyle}>
       <Text style={[styles.textStyle, { width, fontWeight }]}>{title}</Text>

@@ -10,7 +10,7 @@ import { setAuth } from '../redux/reducers/auth-reducer/Auth.slice';
 import { setDataToStorage } from '../redux/sagas/auth-saga/auth-saga.action';
 import { getFontStyles } from '../helpers/getFontStyles';
 
-export const AuthForm = (): JSX.Element => {
+export const AuthForm = () => {
   const { control, handleSubmit, formState: { errors } } = useForm<IUser>({
     mode: 'onBlur'
   });
@@ -25,11 +25,11 @@ export const AuthForm = (): JSX.Element => {
 
   return (
     <View style={{ gap: 16 }}>
-      <Input required pattern={emailRegex} placeholder="Логин" name="login" control={control} />
+      <Input isRequired pattern={emailRegex} placeholder="Логин" name="login" control={control} />
 
       <Input
         pattern={passRegex}
-        required
+        isRequired
         minLength={8}
         placeholder="Пароль"
         name="password"

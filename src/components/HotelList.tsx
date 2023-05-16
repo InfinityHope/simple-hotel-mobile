@@ -9,7 +9,7 @@ import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 import { selectHotels, selectIsLoading } from '../redux/reducers/hotel-reducer/Hotel.selector';
 import { selectSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
 
-export const HotelList = (): JSX.Element => {
+export const HotelList = () => {
   const hotels = useAppSelector(selectHotels);
   const isLoading = useAppSelector(selectIsLoading);
   const searchParams = useAppSelector(selectSearchParams);

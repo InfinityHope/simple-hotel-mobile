@@ -11,7 +11,7 @@ import { selectSearchParams } from '../redux/reducers/search-params-reducer/Sear
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-const HomeScreen = ({ navigation } : HomeScreenProps): JSX.Element => {
+const HomeScreen = ({ navigation } : HomeScreenProps) => {
   const dispatch = useAppDispatch();
   const searchParams = useAppSelector(selectSearchParams);
 
