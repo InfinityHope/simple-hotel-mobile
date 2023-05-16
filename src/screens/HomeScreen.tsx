@@ -1,13 +1,17 @@
 import { StyleSheet, View, Text } from 'react-native';
 import { useEffect } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
 import { SearchForm } from '../components/SearchForm';
 import { HotelList } from '../components/HotelList';
+
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { useAppSelector } from '../hooks/useAppSelector';
+
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
-import { RootStackParamList } from '../navigation/MainNavigation';
 import { selectSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
+
+import { RootStackParamList } from '../navigation/MainNavigation';
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -19,9 +23,11 @@ const HomeScreen = ({ navigation } : HomeScreenProps) => {
     dispatch(fetchHotels(searchParams));
   }, []);
 
+  const navigateToResults = () => navigation.navigate('Results');
+
   return (
     <View style={styles.container}>
-      <SearchForm />
+      <SearchForm navigateToResults={navigateToResults} />
 
       <Text style={styles.homeText}>Подходящие бронирования</Text>
 

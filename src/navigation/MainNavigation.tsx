@@ -4,7 +4,7 @@ import {
   Pressable, StyleSheet, Text, View
 } from 'react-native';
 
-import { HomeScreen } from '../screens';
+import { HomeScreen, ResultsScreen } from '../screens';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { logOut } from '../redux/reducers/auth-reducer/Auth.slice';
 import { removeDataFromStorage } from '../redux/sagas/auth-saga/auth-saga.action';
@@ -13,6 +13,7 @@ import LogOut from '../assets/logOut.svg';
 
 export type RootStackParamList = {
   Home: undefined,
+  Results: undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -31,6 +32,7 @@ const MainNavigator = () => {
         <Stack.Screen
           options={{
             headerStyle: { backgroundColor: '#F4F4F4' },
+            headerShadowVisible: false,
             headerLeft: () => (
               <View style={styles.header}>
                 <Text style={styles.headerTitle}>Simple Hotel Check</Text>
@@ -45,6 +47,13 @@ const MainNavigator = () => {
           }}
           name="Home"
           component={HomeScreen}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false
+          }}
+          name="Results"
+          component={ResultsScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

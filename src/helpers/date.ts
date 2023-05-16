@@ -9,7 +9,7 @@ export const convertLongDate = (date: string) => new Date(date).toLocaleDateStri
   day: 'numeric',
   month: 'long',
   year: 'numeric'
-});
+}).slice(0, -3);
 
 export const addDays = (days: number, date: string) => {
   const newDate = new Date(date);

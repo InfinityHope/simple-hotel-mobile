@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { convertShortDate } from '../../../helpers/date';
+
 import { ISearchParams } from '../../../interfaces/SearchParams';
 
 interface IState {

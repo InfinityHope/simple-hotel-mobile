@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import {
   StyleSheet, Text, TouchableOpacity, View
 } from 'react-native';
+
 import { IButtonStyles } from '../../interfaces/Styles.interface';
 
 interface IProps {

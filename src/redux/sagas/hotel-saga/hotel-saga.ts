@@ -1,8 +1,12 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+
 import { ISearchParams } from '../../../interfaces/SearchParams';
-import { getHotelsFullfiled, getHotelsRejected, setIsLoading } from '../../reducers/hotel-reducer/Hotel.slice';
 import { IHotel } from '../../../interfaces/Hotel.interface';
+
 import { HotelService } from '../../../services/hotel.service';
+
+import { getHotelsFullfiled, getHotelsRejected, setIsLoading } from '../../reducers/hotel-reducer/Hotel.slice';
+
 import { fetchHotels } from './hotel-saga.actions';
 
 export function* getHotelsWorker(action: { type: string; payload: ISearchParams }) {

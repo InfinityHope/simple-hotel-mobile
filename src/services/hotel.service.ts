@@ -1,5 +1,6 @@
-import { API_URL } from '@env';
 import axios from 'axios';
+
+import { API_URL } from '@env';
 import { addDays } from '../helpers/date';
 import { IHotel } from '../interfaces/Hotel.interface';
 

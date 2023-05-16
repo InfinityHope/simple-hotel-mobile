@@ -5,13 +5,16 @@ import { RatingBar } from './RatingBar';
 
 import { getFontStyles } from '../helpers/getFontStyles';
 import { truncateString } from '../helpers/truncateString';
+import { formatPrice } from '../helpers/formatPrice';
 
 import { IHotel } from '../interfaces/Hotel.interface';
 
+import { useAppDispatch } from '../hooks/useAppDispatch';
+
+import { setFavorite } from '../redux/reducers/hotel-reducer/Hotel.slice';
+
 import HotelIcon from '../assets/hotel-item.svg';
 import FavoriteIcon from '../assets/favorite.svg';
-import { useAppDispatch } from '../hooks/useAppDispatch';
-import { setFavorite } from '../redux/reducers/hotel-reducer/Hotel.slice';
 
 export const HotelCard: FC<IHotel> = ({
   hotelId, hotelName, priceAvg, stars, isFavorite
@@ -52,9 +55,7 @@ export const HotelCard: FC<IHotel> = ({
           <Text style={cardPriceLeft}>Цена за ночь: </Text>
 
           <Text style={cardPriceRight}>
-            {priceAvg.toFixed(0)}
-            {' '}
-            ₽
+            {`${formatPrice(priceAvg)} ₽`}
           </Text>
         </View>
       </View>

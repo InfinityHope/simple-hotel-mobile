@@ -1,19 +1,27 @@
 import { StyleSheet, View, Text } from 'react-native';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { FC } from 'react';
 
 import Input from './ui/Input';
 import CustomButton from './ui/Button';
+import DateTimePicker from './ui/DateTimePicker';
 
 import { ISearchParams } from '../interfaces/SearchParams';
+
 import { convertShortDate } from '../helpers/date';
 
 import { useAppDispatch } from '../hooks/useAppDispatch';
+
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 
-import Calendar from '../assets/calendar.svg';
 import Clock from '../assets/clock.svg';
+import Calendar from '../assets/calendar.svg';
 
-export const SearchForm = () => {
+interface IProps {
+  navigateToResults: () => void
+}
+
+export const SearchForm: FC<IProps> = ({ navigateToResults }) => {
   const { control, handleSubmit } = useForm<ISearchParams>({
     defaultValues: {
       location: 'Москва',
@@ -23,8 +31,9 @@ export const SearchForm = () => {
   });
   const dispatch = useAppDispatch();
 
-  const onSubmit: SubmitHandler<ISearchParams> = (data) => {
+  const onSubmitHandler: SubmitHandler<ISearchParams> = (data) => {
     dispatch(fetchHotels(data));
+    navigateToResults();
   };
 
   return (
@@ -35,14 +44,7 @@ export const SearchForm = () => {
 
       <View style={styles.searchFormInputGroup}>
         <View style={styles.inputSection}>
-          <Input
-            additionalStyle={{
-              width: 150
-            }}
-            name="checkIn"
-            placeholder="Дата"
-            control={control}
-          />
+          <DateTimePicker name="checkIn" control={control} />
 
           <Calendar style={styles.inputIcon} />
         </View>
@@ -52,7 +54,7 @@ export const SearchForm = () => {
             additionalStyle={{
               width: 150
             }}
-            type="numeric"
+            type="number-pad"
             name="nights"
             placeholder="Кол-во дней"
             control={control}
@@ -62,7 +64,7 @@ export const SearchForm = () => {
         </View>
       </View>
 
-      <CustomButton onPress={handleSubmit(onSubmit)} title="Найти" />
+      <CustomButton onPress={handleSubmit(onSubmitHandler)} title="Найти" />
     </View>
   );
 };
@@ -95,6 +97,6 @@ const styles = StyleSheet.create({
   },
   inputIcon: {
     position: 'absolute',
-    right: 20
+    right: 10
   }
 });

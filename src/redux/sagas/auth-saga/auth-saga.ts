@@ -1,8 +1,9 @@
-import {
-  call, put, takeLatest
-} from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
+
 import { removeData, retrieveData, storeData } from '../../../helpers/asyncStorage';
+
 import { setAuth } from '../../reducers/auth-reducer/Auth.slice';
+
 import { removeDataFromStorage, setDataToStorage } from './auth-saga.action';
 
 export function* checkAuthWorker() {

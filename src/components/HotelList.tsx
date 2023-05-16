@@ -16,9 +16,8 @@ export const HotelList = () => {
   const searchParams = useAppSelector(selectSearchParams);
   const dispatch = useAppDispatch();
 
-  const getHotels = () => {
+  const getHotelsHandler = () => {
     dispatch(fetchHotels(searchParams));
-    console.log(hotels);
   };
 
   if (error) {
@@ -34,7 +33,7 @@ export const HotelList = () => {
       scrollEnabled
       keyExtractor={(item) => item.hotelId.toString()}
       data={hotels}
-      onRefresh={getHotels}
+      onRefresh={getHotelsHandler}
       refreshing={isLoading}
       renderItem={({ item }) => <HotelCard {...item} />}
     />

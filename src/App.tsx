@@ -5,12 +5,14 @@
  * @format
  */
 
-import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import MainNavigator from './navigation/MainNavigation';
+
 import { AuthScreen } from './screens';
-import { selectIsAuth } from './redux/reducers/auth-reducer/Auth.selector';
+
 import { useAppSelector } from './hooks/useAppSelector';
+
+import { selectIsAuth } from './redux/reducers/auth-reducer/Auth.selector';
 
 function App(): JSX.Element {
   const isAuth = useAppSelector(selectIsAuth);
