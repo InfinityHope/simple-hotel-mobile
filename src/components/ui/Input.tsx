@@ -18,7 +18,11 @@ const Input:FC<IProps> = ({
   pattern, minLength, control, required, name,
 }): JSX.Element => (
   <Controller
-    rules={{ required, minLength, pattern }}
+    rules={{
+      required,
+      minLength,
+      pattern
+    }}
     render={({ field: { value, onChange }, fieldState: { invalid } }) => (
       <TextInput
         value={value?.toString()}

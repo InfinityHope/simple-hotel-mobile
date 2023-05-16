@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Input from './ui/Input';
@@ -11,7 +11,7 @@ import { setDataToStorage } from '../redux/sagas/auth-saga/auth-saga.action';
 import { getFontStyles } from '../helpers/getFontStyles';
 
 export const AuthForm = (): JSX.Element => {
-  const { control, handleSubmit, formState: { isValid } } = useForm<IUser>({
+  const { control, handleSubmit, formState: { errors } } = useForm<IUser>({
     mode: 'onBlur'
   });
   const dispatch = useAppDispatch();
@@ -36,7 +36,9 @@ export const AuthForm = (): JSX.Element => {
         control={control}
       />
 
-      {!isValid ? <Text style={errorText}>Неверные логин или пароль. Повторите попытку</Text> : null}
+      {errors.login || errors.password
+        ? <Text style={errorText}>Неверные логин или пароль. Повторите попытку</Text>
+        : null}
 
       <Button onPress={handleSubmit(onSubmit)} fontWeight="700" title="Войти" />
     </View>
