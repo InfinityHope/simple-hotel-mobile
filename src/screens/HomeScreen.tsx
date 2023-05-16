@@ -4,15 +4,16 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { SearchForm } from '../components/SearchForm';
 import { HotelList } from '../components/HotelList';
 import { useAppDispatch } from '../hooks/useAppDispatch';
+import { useAppSelector } from '../hooks/useAppSelector';
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 import { RootStackParamList } from '../navigation/MainNavigation';
-import { useSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
+import { selectSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen = ({ navigation } : HomeScreenProps): JSX.Element => {
   const dispatch = useAppDispatch();
-  const searchParams = useSearchParams();
+  const searchParams = useAppSelector(selectSearchParams);
 
   useEffect(() => {
     dispatch(fetchHotels(searchParams));
@@ -21,7 +22,9 @@ const HomeScreen = ({ navigation } : HomeScreenProps): JSX.Element => {
   return (
     <View style={styles.container}>
       <SearchForm />
+
       <Text style={styles.homeText}>Подходящие бронирования</Text>
+
       <HotelList />
     </View>
   );
@@ -33,7 +36,7 @@ const styles = StyleSheet.create({
     gap: 24,
     backgroundColor: '#F4F4F4',
     paddingHorizontal: 16,
-    paddingTop: 29
+    paddingTop: 24
   },
   homeText: {
     fontWeight: '700',

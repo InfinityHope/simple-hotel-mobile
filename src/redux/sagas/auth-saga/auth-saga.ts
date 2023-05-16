@@ -1,7 +1,9 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { retrieveData, storeData } from '../../../helpers/asyncStorage';
+import {
+  call, put, takeLatest
+} from 'redux-saga/effects';
+import { removeData, retrieveData, storeData } from '../../../helpers/asyncStorage';
 import { setAuth } from '../../reducers/auth-reducer/Auth.slice';
-import { setDataToStorage } from './auth-saga.action';
+import { removeDataFromStorage, setDataToStorage } from './auth-saga.action';
 
 export function* checkAuthWorker() {
   const isAuth: boolean = yield call(() => retrieveData('authData'));
@@ -19,6 +21,15 @@ function* setAuthWorker(action: { type: string, payload: boolean }) {
   }
 }
 
+function* removeAuthWorker() {
+  try {
+    yield call(() => removeData('authData'));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export function* authWatcher() {
-  yield takeEvery(setDataToStorage().type, setAuthWorker);
+  yield takeLatest(setDataToStorage().type, setAuthWorker);
+  yield takeLatest(removeDataFromStorage().type, removeAuthWorker);
 }

@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface IState {
-  login: string
   isAuth: boolean
 }
 
 const initialState: IState = {
-  login: '',
   isAuth: false
 };
 

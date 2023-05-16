@@ -4,15 +4,14 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import Input from './ui/Input';
 import CustomButton from './ui/Button';
 
-import Calendar from '../assets/calendar.svg';
-import Clock from '../assets/clock.svg';
-
 import { ISearchParams } from '../interfaces/SearchParams';
 import { convertShortDate } from '../helpers/date';
 
 import { useAppDispatch } from '../hooks/useAppDispatch';
-import { setSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.slice';
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
+
+import Calendar from '../assets/calendar.svg';
+import Clock from '../assets/clock.svg';
 
 export const SearchForm = (): JSX.Element => {
   const { control, handleSubmit } = useForm<ISearchParams>({
@@ -25,7 +24,6 @@ export const SearchForm = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<ISearchParams> = (data) => {
-    dispatch(setSearchParams(data));
     dispatch(fetchHotels(data));
   };
 
@@ -40,6 +38,7 @@ export const SearchForm = (): JSX.Element => {
           <Input width={150} name="checkIn" placeholder="Дата" control={control} />
           <Calendar style={styles.inputIcon} />
         </View>
+
         <View style={styles.inputSection}>
           <Input width={150} name="nights" placeholder="Кол-во дней" control={control} />
           <Clock style={styles.inputIcon} />

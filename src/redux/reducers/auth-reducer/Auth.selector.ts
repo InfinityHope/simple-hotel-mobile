@@ -1,3 +1,3 @@
-import { useAppSelector } from '../../../hooks/useAppSelector';
+import { RootState } from '../../store';
 
-export const useIsAuth = () => useAppSelector((state) => state.auth.isAuth);
+export const selectIsAuth = (state: RootState) => state.auth.isAuth;

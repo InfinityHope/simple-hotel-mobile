@@ -5,9 +5,11 @@ import {
 } from 'react-native';
 
 import { HomeScreen } from '../screens';
-import LogOut from '../assets/logOut.svg';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { logOut } from '../redux/reducers/auth-reducer/Auth.slice';
+import { removeDataFromStorage } from '../redux/sagas/auth-saga/auth-saga.action';
+
+import LogOut from '../assets/logOut.svg';
 
 export type RootStackParamList = {
   Home: undefined,
@@ -20,6 +22,7 @@ const MainNavigator = () => {
 
   const logoutHandler = () => {
     dispatch(logOut());
+    dispatch(removeDataFromStorage());
   };
 
   return (

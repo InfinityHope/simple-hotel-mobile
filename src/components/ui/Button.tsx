@@ -6,7 +6,7 @@ import {
 interface IProps {
   title: string
   width?: string | number
-  fontWeight?: '400' | '500' | '700'
+  fontWeight?: '400' | '700'
   onPress?: () => void
 }
 

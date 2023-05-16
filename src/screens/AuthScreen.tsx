@@ -13,6 +13,7 @@ const AuthScreen = (): JSX.Element => (
     <View style={styles.container}>
       <View style={{ gap: 4 }}>
         <Text style={heading}>Добро пожаловать в</Text>
+
         <Text style={subHeading}>Simple Hotel Check</Text>
       </View>
       <AuthForm />

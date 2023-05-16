@@ -11,7 +11,7 @@ export const getFontStyles = ({
 
 interface IFontStyles {
   size?: number
-  weight?: '400' | '500' | '600' | '700' | '800',
+  weight?: '400' | '700',
   color?: string
   lHeight?: number
 }

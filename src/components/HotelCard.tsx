@@ -1,14 +1,15 @@
 import { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import HotelIcon from '../assets/hotel-item.svg';
-import FavoriteIcon from '../assets/favorite.svg';
 import { RatingBar } from './RatingBar';
 
 import { getFontStyles } from '../helpers/getFontStyles';
 import { truncateString } from '../helpers/truncateString';
 
 import { IHotel } from '../interfaces/Hotel.interface';
+
+import HotelIcon from '../assets/hotel-item.svg';
+import FavoriteIcon from '../assets/favorite.svg';
 
 export const HotelCard: FC<IHotel> = ({
   hotelName, priceAvg, stars
@@ -17,20 +18,25 @@ export const HotelCard: FC<IHotel> = ({
     <View style={styles.cardTop}>
       <HotelIcon />
       <View style={{ justifyContent: 'space-between', width: '75%' }}>
+
         <View style={styles.cardTopHeader}>
           <Text style={cardTitle}>{truncateString(hotelName, 25)}</Text>
           <FavoriteIcon />
         </View>
+
         <View style={styles.cardTopFooter}>
           <RatingBar stars={stars} />
           <Text style={cardRoomsText}>Осталось 3 комнаты</Text>
         </View>
+
       </View>
     </View>
     <View style={{ height: 1, width: '100%', backgroundColor: '#F4F4F4' }} />
     <View style={styles.cardBottom}>
       <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
+
         <Text style={cardPriceLeft}>Цена за ночь: </Text>
+
         <Text style={cardPriceRight}>
           {priceAvg.toFixed(0)}
           {' '}

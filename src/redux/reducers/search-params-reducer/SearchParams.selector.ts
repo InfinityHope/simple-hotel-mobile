@@ -1,3 +1,3 @@
-import { useAppSelector } from '../../../hooks/useAppSelector';
+import { RootState } from '../../store';
 
-export const useSearchParams = () => useAppSelector((state) => state.searchParams);
+export const selectSearchParams = (state: RootState) => state.searchParams;
