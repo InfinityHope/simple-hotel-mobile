@@ -46,7 +46,11 @@ export const AuthForm = () => {
 
       {(errors.login || errors.password) && <Text style={errorText}>Неверные логин или пароль. Повторите попытку</Text>}
 
-      <Button additionalStyles={btnStyles} onPress={handleSubmit(onSubmitHandler)} title="Войти" />
+      <Button
+        additionalStyles={btnStyles}
+        onPress={handleSubmit(onSubmitHandler)}
+        title="Войти"
+      />
     </View>
   );
 };

@@ -31,7 +31,10 @@ export const HotelCard: FC<IHotel> = ({
           <View style={styles.cardTopHeader}>
             <Text style={cardTitle}>{truncateString(hotelName, 20)}</Text>
 
-            <FavoriteIcon onPress={favoriteHandler} fill={isFavorite ? 'red' : '#fff'} />
+            <FavoriteIcon
+              onPress={favoriteHandler}
+              fill={isFavorite ? 'red' : '#fff'}
+            />
           </View>
 
           <View style={styles.cardTopFooter}>

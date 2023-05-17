@@ -38,11 +38,18 @@ export const SearchForm: FC<IProps> = ({ navigateToResults }) => {
     <View style={styles.searchForm}>
       <Text style={styles.searchFormTitle}>Куда едем? </Text>
 
-      <Input name="location" placeholder="Локация" control={control} />
+      <Input
+        name="location"
+        placeholder="Локация"
+        control={control}
+      />
 
       <View style={styles.searchFormInputGroup}>
         <View style={styles.inputSection}>
-          <DateTimePicker name="checkIn" control={control} />
+          <DateTimePicker
+            name="checkIn"
+            control={control}
+          />
 
           <Calendar style={styles.inputIcon} />
         </View>
@@ -62,7 +69,10 @@ export const SearchForm: FC<IProps> = ({ navigateToResults }) => {
         </View>
       </View>
 
-      <CustomButton onPress={handleSubmit(onSubmitHandler)} title="Найти" />
+      <CustomButton
+        onPress={handleSubmit(onSubmitHandler)}
+        title="Найти"
+      />
     </View>
   );
 };

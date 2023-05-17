@@ -12,7 +12,10 @@ const ResultsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <TabNavigator tabScene={resultsScene} routes={routes} />
+      <TabNavigator
+        tabScene={resultsScene}
+        routes={routes}
+      />
     </View>
   );
 };
