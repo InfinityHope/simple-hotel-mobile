@@ -16,6 +16,7 @@ import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 
 import Clock from '../assets/clock.svg';
 import Calendar from '../assets/calendar.svg';
+import { setSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.slice';
 
 interface IProps {
   navigateToResults: () => void
@@ -33,6 +34,7 @@ export const SearchForm: FC<IProps> = ({ navigateToResults }) => {
 
   const onSubmitHandler: SubmitHandler<ISearchParams> = (data) => {
     dispatch(fetchHotels(data));
+    dispatch(setSearchParams(data));
     navigateToResults();
   };
 
@@ -79,6 +81,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOpacity: 0.25,
     borderRadius: 16,
+    marginHorizontal: 16,
   },
   searchFormTitle: {
     fontWeight: '700',

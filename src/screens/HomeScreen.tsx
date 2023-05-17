@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 24,
     backgroundColor: '#F4F4F4',
-    paddingHorizontal: 16,
     paddingTop: 24
   },
   homeText: {
     fontWeight: '700',
     fontSize: 18,
     lineHeight: 22,
+    paddingHorizontal: 16,
     alignItems: 'center',
     color: '#000000',
   }
