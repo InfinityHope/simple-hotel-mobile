@@ -23,19 +23,19 @@ const DateTimePicker:FC<IProps> = ({ control, name, additionalStyle }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [text, setText] = useState<Date | null>(new Date());
 
-  const openDateModalHandler = () => setIsOpen(true);
+  const handleOpenModalClick = () => setIsOpen(true);
 
-  const closeDateModalHandler = () => setIsOpen(false);
+  const handleCloseModalClick = () => setIsOpen(false);
 
   const confirmHandler = ({ onChange, date }: confirmOptions) => {
     setText(date);
-    closeDateModalHandler();
+    handleCloseModalClick();
     onChange(convertShortDate(date));
   };
 
   return (
     <View>
-      <Pressable onPress={openDateModalHandler}>
+      <Pressable onPress={handleOpenModalClick}>
         <View style={styles.datePicker}>
           <Text>
             {text?.toLocaleDateString('ru-RU')}
@@ -54,7 +54,7 @@ const DateTimePicker:FC<IProps> = ({ control, name, additionalStyle }) => {
             mode="date"
             locale="ru"
             style={additionalStyle}
-            onCancel={closeDateModalHandler}
+            onCancel={handleCloseModalClick}
             onConfirm={(date) => confirmHandler({ onChange, date })}
           />
         )}

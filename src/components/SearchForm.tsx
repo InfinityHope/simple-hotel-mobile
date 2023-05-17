@@ -28,7 +28,7 @@ export const SearchForm: FC<IProps> = ({ navigateToResults }) => {
   });
   const dispatch = useAppDispatch();
 
-  const onSubmitHandler: SubmitHandler<ISearchParams> = (data) => {
+  const handleSubmitClick: SubmitHandler<ISearchParams> = (data) => {
     dispatch(fetchHotels(data));
     dispatch(setSearchParams(data));
     navigateToResults();
@@ -70,7 +70,7 @@ export const SearchForm: FC<IProps> = ({ navigateToResults }) => {
       </View>
 
       <CustomButton
-        onPress={handleSubmit(onSubmitHandler)}
+        onPress={handleSubmit(handleSubmitClick)}
         title="Найти"
       />
     </View>

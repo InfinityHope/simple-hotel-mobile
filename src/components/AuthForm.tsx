@@ -15,7 +15,7 @@ export const AuthForm = () => {
   const { control, handleSubmit, formState: { errors } } = useForm<IUser>({ mode: 'onBlur' });
   const dispatch = useAppDispatch();
 
-  const onSubmitHandler: SubmitHandler<IUser> = (data) => {
+  const handleSubmitClick: SubmitHandler<IUser> = (data) => {
     if (data.login && data.password) {
       dispatch(setAuth());
       dispatch(setDataToStorage(true));
@@ -48,7 +48,7 @@ export const AuthForm = () => {
 
       <Button
         additionalStyles={btnStyles}
-        onPress={handleSubmit(onSubmitHandler)}
+        onPress={handleSubmit(handleSubmitClick)}
         title="Войти"
       />
     </View>

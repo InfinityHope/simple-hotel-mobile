@@ -14,7 +14,7 @@ export const HotelList = () => {
   const searchParams = useAppSelector(selectSearchParams);
   const dispatch = useAppDispatch();
 
-  const getHotelsHandler = () => {
+  const handleGetHotelsRefresh = () => {
     dispatch(fetchHotels(searchParams));
   };
 
@@ -32,7 +32,7 @@ export const HotelList = () => {
       style={{ paddingHorizontal: 16 }}
       keyExtractor={(item) => item.hotelId.toString()}
       data={hotels}
-      onRefresh={getHotelsHandler}
+      onRefresh={handleGetHotelsRefresh}
       refreshing={isLoading}
       renderItem={({ item }) => <HotelCard {...item} />}
     />

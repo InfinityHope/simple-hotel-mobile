@@ -17,7 +17,7 @@ export const HotelCard: FC<IHotel> = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  const favoriteHandler = () => {
+  const handleAddToFavoriteClick = () => {
     dispatch(setFavorite(hotelId));
   };
 
@@ -32,7 +32,7 @@ export const HotelCard: FC<IHotel> = ({
             <Text style={cardTitle}>{truncateString(hotelName, 20)}</Text>
 
             <FavoriteIcon
-              onPress={favoriteHandler}
+              onPress={handleAddToFavoriteClick}
               fill={isFavorite ? 'red' : '#fff'}
             />
           </View>
