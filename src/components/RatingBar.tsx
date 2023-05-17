@@ -10,7 +10,7 @@ interface IRatingBar {
 export const RatingBar: FC<IRatingBar> = ({ stars }) => (
   <View style={{ flexDirection: 'row', gap: 9 }}>
     {
-        [...Array(stars || 5)].map((star, index) => <Star key={index} />)
+      [...Array(stars || 5)].map((star, index) => <Star key={index} />)
     }
   </View>
 );

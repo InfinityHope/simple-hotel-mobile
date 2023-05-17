@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
-
 import { AxiosError } from 'axios';
+
 import { ISearchParams } from '../../../interfaces/SearchParams';
 import { IHotel } from '../../../interfaces/Hotel.interface';
 import { HotelService } from '../../../services/hotel.service';

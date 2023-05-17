@@ -16,6 +16,7 @@ import { useAppSelector } from '../hooks/useAppSelector';
 import { selectSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
 import { convertLongDate } from '../helpers/date';
 import { getFontStyles } from '../helpers/getFontStyles';
+import { createLabel } from '../helpers/createLabel';
 
 export type RootStackParamList = {
   Home: undefined,
@@ -68,7 +69,9 @@ const MainNavigator = () => {
                 <View style={styles.headerResultsInfo}>
                   <SearchIcon style={styles.searchIcon} />
 
-                  <Text style={headerResultsInfoText}>{`${location}, ${convertLongDate(checkIn)}, ${nights} ночь`}</Text>
+                  <Text style={headerResultsInfoText}>
+                    {`${location}, ${convertLongDate(checkIn)}, ${nights}  ${createLabel(nights, ['ночь', 'ночи', 'ночей'])}`}
+                  </Text>
                 </View>
 
               </View>

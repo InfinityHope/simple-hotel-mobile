@@ -1,5 +1,6 @@
 import { Alert } from 'react-native';
 import { AxiosError } from 'axios';
+
 import { IError } from '../../../interfaces/Error.interface';
 
 export function* errorWorker(error: AxiosError<IError>) {
