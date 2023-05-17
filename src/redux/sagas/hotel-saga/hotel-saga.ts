@@ -1,11 +1,14 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
+import { AxiosError } from 'axios';
 import { ISearchParams } from '../../../interfaces/SearchParams';
 import { IHotel } from '../../../interfaces/Hotel.interface';
 import { HotelService } from '../../../services/hotel.service';
-import { getHotelsFullfiled, getHotelsRejected, setIsLoading } from '../../reducers/hotel-reducer/Hotel.slice';
+import { setHotels, setIsLoading } from '../../reducers/hotel-reducer/Hotel.slice';
 import { fetchHotels } from './hotel-saga.actions';
+import { errorWorker } from '../error-saga/error-saga';
+import { IError } from '../../../interfaces/Error.interface';
 
 export function* getHotelsWorker(action: PayloadAction<ISearchParams>) {
   const { location, nights, checkIn } = action.payload;
@@ -13,11 +16,9 @@ export function* getHotelsWorker(action: PayloadAction<ISearchParams>) {
 
   try {
     const data: IHotel[] = yield call(HotelService.getHotels, location, nights, checkIn);
-    yield put(getHotelsFullfiled(data));
+    yield put(setHotels(data));
   } catch (e: unknown) {
-    if (e instanceof Error) {
-      yield put(getHotelsRejected(e.message as string));
-    }
+    yield call(() => errorWorker(e as AxiosError<IError>));
   } finally {
     yield put(setIsLoading(false));
   }

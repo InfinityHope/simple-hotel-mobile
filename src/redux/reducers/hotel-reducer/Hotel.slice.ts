@@ -6,14 +6,12 @@ interface IState {
   hotels: IHotel[],
   favorites: IHotel[],
   isLoading: boolean,
-  error: string
 }
 
 const initialState: IState = {
   hotels: [],
   favorites: [],
   isLoading: false,
-  error: ''
 };
 
 const HotelSlice = createSlice({
@@ -23,7 +21,7 @@ const HotelSlice = createSlice({
     setFavorite: (state, action: PayloadAction<IHotel>) => {
       const candidate = state.favorites.find((hotel) => hotel.hotelId === action.payload.hotelId);
       if (!candidate) {
-        state.favorites = [...state.favorites, action.payload];
+        state.favorites = [...state.favorites, { ...action.payload, isFavorite: true }];
       } else {
         state.favorites = state.favorites.filter((hotel) => hotel.hotelId !== action.payload.hotelId);
       }
@@ -31,16 +29,14 @@ const HotelSlice = createSlice({
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
-    getHotelsFullfiled: (state, action: PayloadAction<IHotel[]>) => {
-      state.hotels = action.payload.map((hotel) => ({ ...hotel, isFavorite: false }));
-    },
-    getHotelsRejected: (state, action:PayloadAction<string>) => {
-      state.error = action.payload;
+    setHotels: (state, action: PayloadAction<IHotel[]>) => {
+      state.hotels = action.payload;
     }
+
   }
 });
 
 export default HotelSlice.reducer;
 export const {
-  setIsLoading, getHotelsRejected, getHotelsFullfiled, setFavorite
+  setIsLoading, setHotels, setFavorite
 } = HotelSlice.actions;
