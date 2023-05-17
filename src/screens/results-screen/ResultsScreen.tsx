@@ -8,7 +8,6 @@ import { convertLongDate } from '../../helpers/date';
 import { TabNavigator } from '../../components/TabNavigator';
 import { Results } from './tab-scenes/Results';
 import { Favorites } from './tab-scenes/Favorites';
-
 import SearchIcon from '../../assets/search-normal.svg';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { selectSearchParams } from '../../redux/reducers/search-params-reducer/SearchParams.selector';

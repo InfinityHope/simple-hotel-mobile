@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import {
   StyleSheet, View, Text, Pressable
 } from 'react-native';
+
 import { HotelList } from '../../../components/HotelList';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 import { selectFavorites } from '../../../redux/reducers/hotel-reducer/Hotel.selector';
-
-import SelectSVG from '../../../assets/select.svg';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { sortFavorites } from '../../../redux/reducers/hotel-reducer/Hotel.slice';
+
+import SelectSVG from '../../../assets/select.svg';
 
 export const Favorites = () => {
   const favorites = useAppSelector(selectFavorites);
