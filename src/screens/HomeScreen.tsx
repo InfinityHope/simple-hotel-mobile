@@ -4,13 +4,10 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { SearchForm } from '../components/SearchForm';
 import { HotelList } from '../components/HotelList';
-
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { useAppSelector } from '../hooks/useAppSelector';
-
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 import { selectSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
-
 import { RootStackParamList } from '../navigation/MainNavigation';
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;

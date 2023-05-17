@@ -2,7 +2,6 @@ import { StyleSheet, View } from 'react-native';
 import { useState } from 'react';
 
 import { TabNavigator } from '../components/TabNavigator';
-
 import { resultsScene } from '../navigation/TabScenes';
 
 const ResultsScreen = () => {

@@ -1,8 +1,9 @@
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
+
+import { HotelCard } from './HotelCard';
 import { useAppSelector } from '../hooks/useAppSelector';
 import { selectFavorites } from '../redux/reducers/hotel-reducer/Hotel.selector';
-import { HotelCard } from './HotelCard';
 
 export const FavoritesList = () => {
   const favorites = useAppSelector(selectFavorites);

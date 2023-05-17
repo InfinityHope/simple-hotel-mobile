@@ -1,10 +1,8 @@
 import { ActivityIndicator, Alert, FlatList } from 'react-native';
 
 import { HotelCard } from './HotelCard';
-
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { useAppSelector } from '../hooks/useAppSelector';
-
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 import { selectError, selectHotels, selectIsLoading } from '../redux/reducers/hotel-reducer/Hotel.selector';
 import { selectSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';

@@ -5,18 +5,14 @@ import { FC } from 'react';
 import Input from './ui/Input';
 import CustomButton from './ui/Button';
 import DateTimePicker from './ui/DateTimePicker';
-
 import { ISearchParams } from '../interfaces/SearchParams';
-
 import { convertShortDate } from '../helpers/date';
-
 import { useAppDispatch } from '../hooks/useAppDispatch';
-
+import { setSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.slice';
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 
 import Clock from '../assets/clock.svg';
 import Calendar from '../assets/calendar.svg';
-import { setSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.slice';
 
 interface IProps {
   navigateToResults: () => void

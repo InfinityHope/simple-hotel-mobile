@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { TabBar, TabView } from 'react-native-tab-view';
 import { StyleSheet } from 'react-native';
+
 import { getFontStyles } from '../helpers/getFontStyles';
 
 interface IProps {

@@ -3,7 +3,6 @@ import {
 } from 'react-native';
 
 import { AuthForm } from '../components/AuthForm';
-
 import { getFontStyles } from '../helpers/getFontStyles';
 
 const AuthScreen = () => (

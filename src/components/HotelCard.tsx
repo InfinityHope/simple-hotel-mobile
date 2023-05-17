@@ -2,15 +2,11 @@ import { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { RatingBar } from './RatingBar';
-
 import { getFontStyles } from '../helpers/getFontStyles';
 import { truncateString } from '../helpers/truncateString';
 import { formatPrice } from '../helpers/formatPrice';
-
 import { IHotel } from '../interfaces/Hotel.interface';
-
 import { useAppDispatch } from '../hooks/useAppDispatch';
-
 import { setFavorite } from '../redux/reducers/hotel-reducer/Hotel.slice';
 
 import HotelIcon from '../assets/hotel-item.svg';
