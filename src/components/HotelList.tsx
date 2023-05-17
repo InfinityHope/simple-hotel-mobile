@@ -1,7 +1,8 @@
-import { ActivityIndicator, FlatList, View } from 'react-native';
-
+import {
+  ActivityIndicator, FlatList, View, Text
+} from 'react-native';
 import { FC } from 'react';
-import { Text } from 'react-native-svg';
+
 import { HotelCard } from './HotelCard';
 import { IHotel } from '../interfaces/Hotel.interface';
 
@@ -18,7 +19,7 @@ export const HotelList: FC<IHotelList> = ({ isLoading, hotels, handleOnRefresh }
 
   return (
     <View style={{ paddingHorizontal: 16 }}>
-      {hotels ? (
+      {hotels.length !== 0 ? (
         <FlatList
           keyExtractor={(item) => item.hotelId.toString()}
           data={hotels}
@@ -26,7 +27,7 @@ export const HotelList: FC<IHotelList> = ({ isLoading, hotels, handleOnRefresh }
           refreshing={isLoading || false}
           renderItem={({ item }) => <HotelCard {...item} />}
         />
-      ) : <Text>Нет доступных отелей</Text>}
+      ) : <Text style={{ alignSelf: 'center' }}>Нет доступных отелей</Text>}
 
     </View>
   );

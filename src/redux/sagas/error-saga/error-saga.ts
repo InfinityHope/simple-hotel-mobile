@@ -20,7 +20,7 @@ export function* errorWorker(error: AxiosError<IError>) {
       break;
     }
     default: {
-      yield Alert.alert('Ошибка', 'error');
+      yield Alert.alert('Ошибка', 'Error');
       break;
     }
   }
