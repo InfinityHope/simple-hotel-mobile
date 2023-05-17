@@ -5,7 +5,7 @@ import { addDays } from '../helpers/date';
 import { IHotel } from '../interfaces/Hotel.interface';
 
 export const HotelService = {
-  async getHotels(location: string, nights: number, checkIn: string): Promise<IHotel> {
+  async getHotels(location: string, nights: number, checkIn: string): Promise<IHotel[]> {
     const checkOut = addDays(+nights, checkIn);
     const { data } = await axios.get(API_URL, {
       params: {

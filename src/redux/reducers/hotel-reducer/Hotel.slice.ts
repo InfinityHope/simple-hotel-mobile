@@ -31,6 +31,21 @@ const HotelSlice = createSlice({
     },
     setHotels: (state, action: PayloadAction<IHotel[]>) => {
       state.hotels = action.payload;
+    },
+    sortFavorites: (state, action: PayloadAction<string>) => {
+      switch (action.payload) {
+        case 'rating': {
+          state.favorites = state.favorites.sort((a, b) => b.stars - a.stars);
+          break;
+        }
+        case 'price': {
+          state.favorites = state.favorites.sort((a, b) => b.priceAvg - a.priceAvg);
+          break;
+        }
+        default: {
+          return state;
+        }
+      }
     }
 
   }
@@ -38,5 +53,5 @@ const HotelSlice = createSlice({
 
 export default HotelSlice.reducer;
 export const {
-  setIsLoading, setHotels, setFavorite
+  setIsLoading, setHotels, setFavorite, sortFavorites
 } = HotelSlice.actions;
