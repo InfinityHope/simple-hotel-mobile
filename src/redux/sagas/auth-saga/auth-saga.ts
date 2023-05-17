@@ -1,9 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 import { removeData, retrieveData, storeData } from '../../../helpers/asyncStorage';
-
 import { setAuth } from '../../reducers/auth-reducer/Auth.slice';
-
 import { removeDataFromStorage, setDataToStorage } from './auth-saga.action';
 
 export function* checkAuthWorker() {
@@ -13,7 +12,7 @@ export function* checkAuthWorker() {
   }
 }
 
-function* setAuthWorker(action: { type: string, payload: boolean }) {
+function* setAuthWorker(action: PayloadAction<boolean>) {
   const isAuth = action.payload;
   try {
     yield call(() => storeData('authData', isAuth));

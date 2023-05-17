@@ -28,7 +28,6 @@ export const HotelList = () => {
 
   return (
     <FlatList
-      scrollEnabled
       style={{ paddingHorizontal: 16 }}
       keyExtractor={(item) => item.hotelId.toString()}
       data={hotels}

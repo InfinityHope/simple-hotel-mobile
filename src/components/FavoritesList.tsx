@@ -12,7 +12,6 @@ export const FavoritesList = () => {
     <View>
       {favorites.length !== 0 ? (
         <FlatList
-          scrollEnabled
           keyExtractor={(item) => item.hotelId.toString()}
           data={favorites}
           renderItem={({ item }) => <HotelCard {...item} />}

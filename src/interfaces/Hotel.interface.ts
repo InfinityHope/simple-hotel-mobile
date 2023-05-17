@@ -10,14 +10,3 @@ export interface IHotel {
   }
   isFavorite: boolean
 }
-
-export interface IFavoriteHotel {
-  hotelId: number
-  hotelName: string
-  stars: number
-  priceAvg: number
-  city: string
-  isFavorite: boolean
-  checkIn: string
-  nights: number
-}
