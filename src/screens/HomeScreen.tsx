@@ -9,16 +9,23 @@ import { useAppSelector } from '../hooks/useAppSelector';
 import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
 import { selectSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
 import { RootStackParamList } from '../navigation/MainNavigation';
+import { selectHotels, selectIsLoading } from '../redux/reducers/hotel-reducer/Hotel.selector';
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen = ({ navigation } : HomeScreenProps) => {
   const dispatch = useAppDispatch();
   const searchParams = useAppSelector(selectSearchParams);
+  const hotels = useAppSelector(selectHotels);
+  const isLoading = useAppSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchHotels(searchParams));
   }, []);
+
+  const handleGetHotelsRefresh = () => {
+    dispatch(fetchHotels(searchParams));
+  };
 
   const navigateToResults = () => navigation.navigate('Results');
 
@@ -28,7 +35,11 @@ const HomeScreen = ({ navigation } : HomeScreenProps) => {
 
       <Text style={styles.homeText}>Подходящие бронирования</Text>
 
-      <HotelList />
+      <HotelList
+        hotels={hotels}
+        isLoading={isLoading}
+        handleOnRefresh={handleGetHotelsRefresh}
+      />
     </View>
   );
 };

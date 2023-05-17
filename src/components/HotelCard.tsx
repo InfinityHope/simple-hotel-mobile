@@ -11,14 +11,18 @@ import { setFavorite } from '../redux/reducers/hotel-reducer/Hotel.slice';
 
 import HotelIcon from '../assets/hotel-item.svg';
 import FavoriteIcon from '../assets/favorite.svg';
+import { useIsFavorite } from '../hooks/useIsFavorite';
 
-export const HotelCard: FC<IHotel> = ({
-  hotelId, hotelName, priceAvg, stars, isFavorite
-}) => {
+export const HotelCard: FC<IHotel> = (hotel) => {
+  const {
+    hotelId, hotelName, stars, priceAvg
+  } = hotel;
+
   const dispatch = useAppDispatch();
+  const isFavorite = useIsFavorite(hotelId);
 
   const handleAddToFavoriteClick = () => {
-    dispatch(setFavorite(hotelId));
+    dispatch(setFavorite(hotel));
   };
 
   return (

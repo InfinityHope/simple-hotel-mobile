@@ -1,8 +1,15 @@
 import { StyleSheet, View } from 'react-native';
 import { useState } from 'react';
+import { SceneMap } from 'react-native-tab-view';
 
-import { TabNavigator } from '../components/TabNavigator';
-import { resultsScene } from '../navigation/TabScenes';
+import { TabNavigator } from '../../components/TabNavigator';
+import { Results } from './tab-scenes/Results';
+import { Favorites } from './tab-scenes/Favorites';
+
+export const resultsScene = SceneMap({
+  results: Results,
+  favorites: Favorites
+});
 
 const ResultsScreen = () => {
   const [routes] = useState([

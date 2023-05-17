@@ -1,39 +1,33 @@
-import { ActivityIndicator, Alert, FlatList } from 'react-native';
+import { ActivityIndicator, FlatList, View } from 'react-native';
 
+import { FC } from 'react';
+import { Text } from 'react-native-svg';
 import { HotelCard } from './HotelCard';
-import { useAppDispatch } from '../hooks/useAppDispatch';
-import { useAppSelector } from '../hooks/useAppSelector';
-import { fetchHotels } from '../redux/sagas/hotel-saga/hotel-saga.actions';
-import { selectError, selectHotels, selectIsLoading } from '../redux/reducers/hotel-reducer/Hotel.selector';
-import { selectSearchParams } from '../redux/reducers/search-params-reducer/SearchParams.selector';
+import { IHotel } from '../interfaces/Hotel.interface';
 
-export const HotelList = () => {
-  const hotels = useAppSelector(selectHotels);
-  const isLoading = useAppSelector(selectIsLoading);
-  const error = useAppSelector(selectError);
-  const searchParams = useAppSelector(selectSearchParams);
-  const dispatch = useAppDispatch();
+interface IHotelList {
+  isLoading?: boolean
+  hotels: IHotel[]
+  handleOnRefresh?: () => void
+}
 
-  const handleGetHotelsRefresh = () => {
-    dispatch(fetchHotels(searchParams));
-  };
-
-  if (error) {
-    Alert.alert('Ошибка', 'произошла ошибка, повторите попытку');
-  }
-
+export const HotelList: FC<IHotelList> = ({ isLoading, hotels, handleOnRefresh }) => {
   if (isLoading) {
     return <ActivityIndicator size="large" />;
   }
 
   return (
-    <FlatList
-      style={{ paddingHorizontal: 16 }}
-      keyExtractor={(item) => item.hotelId.toString()}
-      data={hotels}
-      onRefresh={handleGetHotelsRefresh}
-      refreshing={isLoading}
-      renderItem={({ item }) => <HotelCard {...item} />}
-    />
+    <View style={{ paddingHorizontal: 16 }}>
+      {hotels ? (
+        <FlatList
+          keyExtractor={(item) => item.hotelId.toString()}
+          data={hotels}
+          onRefresh={handleOnRefresh}
+          refreshing={isLoading || false}
+          renderItem={({ item }) => <HotelCard {...item} />}
+        />
+      ) : <Text>Нет доступных отелей</Text>}
+
+    </View>
   );
 };
