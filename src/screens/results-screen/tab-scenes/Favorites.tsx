@@ -7,8 +7,6 @@ export const Favorites = () => {
   const favorites = useAppSelector(selectFavorites);
 
   return (
-    <HotelList
-      hotels={favorites}
-    />
+    <HotelList hotels={favorites} />
   );
 };

@@ -15,6 +15,9 @@ export const Results = () => {
   };
 
   return (
-    <HotelList hotels={hotels} handleOnRefresh={handleGetHotelsRefresh} />
+    <HotelList
+      hotels={hotels}
+      handleOnRefresh={handleGetHotelsRefresh}
+    />
   );
 };
