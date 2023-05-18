@@ -7,17 +7,16 @@ import { truncateString } from '../helpers/truncateString';
 import { formatPrice } from '../helpers/formatPrice';
 import { IHotel } from '../interfaces/Hotel.interface';
 import { useAppDispatch } from '../hooks/useAppDispatch';
+import { useIsFavorite } from '../hooks/useIsFavorite';
 import { setFavorite } from '../redux/reducers/hotel-reducer/Hotel.slice';
 
 import HotelIcon from '../assets/hotel-item.svg';
 import FavoriteIcon from '../assets/favorite.svg';
-import { useIsFavorite } from '../hooks/useIsFavorite';
 
 export const HotelCard: FC<IHotel> = (hotel) => {
   const {
     hotelId, hotelName, stars, priceAvg
   } = hotel;
-
   const dispatch = useAppDispatch();
   const isFavorite = useIsFavorite(hotelId);
 
@@ -30,7 +29,7 @@ export const HotelCard: FC<IHotel> = (hotel) => {
       <View style={styles.cardTop}>
         <HotelIcon />
 
-        <View style={{ justifyContent: 'space-between', width: '75%' }}>
+        <View style={styles.cardTopBody}>
 
           <View style={styles.cardTopHeader}>
             <Text style={cardTitle}>{truncateString(hotelName, 20)}</Text>
@@ -50,10 +49,10 @@ export const HotelCard: FC<IHotel> = (hotel) => {
         </View>
       </View>
 
-      <View style={{ height: 1, width: '100%', backgroundColor: '#F4F4F4' }} />
+      <View style={styles.cardDivider} />
 
       <View style={styles.cardBottom}>
-        <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
+        <View style={styles.cardBottomBody}>
 
           <Text style={cardPriceLeft}>Цена за ночь: </Text>
 
@@ -75,9 +74,18 @@ const styles = StyleSheet.create({
     gap: 8,
     marginBottom: 16
   },
+  cardDivider: {
+    height: 1,
+    width: '100%',
+    backgroundColor: '#F4F4F4'
+  },
   cardTop: {
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  cardTopBody: {
+    justifyContent: 'space-between',
+    width: '75%'
   },
   cardTopHeader: {
     flexDirection: 'row',
@@ -92,6 +100,11 @@ const styles = StyleSheet.create({
   cardBottom: {
     flexDirection: 'row',
     justifyContent: 'flex-end'
+  },
+  cardBottomBody: {
+    flexDirection: 'row',
+    gap: 8,
+    alignItems: 'center'
   }
 });
 

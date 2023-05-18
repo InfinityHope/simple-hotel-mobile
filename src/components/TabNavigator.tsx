@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { TabBar, TabView } from 'react-native-tab-view';
-import { StyleSheet } from 'react-native';
+import { StyleProp, StyleSheet } from 'react-native';
 
 import { getFontStyles } from '../helpers/getFontStyles';
 
@@ -9,7 +9,7 @@ interface IProps {
   tabScene: any
 }
 
-const renderTabBar = (props: any) => (
+const renderTabBar = (props: StyleProp<any>) => (
   <TabBar
     {...props}
     labelStyle={tabLabel}

@@ -9,7 +9,7 @@ export const Favorites = () => {
   const favorites = useAppSelector(selectFavorites);
 
   return (
-    <View style={{ flex: 1, gap: 24, marginBottom: 70 }}>
+    <View style={{ flex: 1, gap: 24 }}>
       <SortBlock />
 
       <HotelList hotels={favorites} />

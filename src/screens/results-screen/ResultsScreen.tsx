@@ -4,7 +4,6 @@ import {
 import { useState } from 'react';
 import { SceneMap } from 'react-native-tab-view';
 
-import { convertLongDate } from '../../helpers/date';
 import { TabNavigator } from '../../components/TabNavigator';
 import { Results } from './tab-scenes/Results';
 import { Favorites } from './tab-scenes/Favorites';
@@ -12,6 +11,7 @@ import SearchIcon from '../../assets/search-normal.svg';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { selectSearchParams } from '../../redux/reducers/search-params-reducer/SearchParams.selector';
 import { getFontStyles } from '../../helpers/getFontStyles';
+import { convertLongDate } from '../../helpers/date';
 import { createLabel } from '../../helpers/createLabel';
 
 export const resultsScene = SceneMap({
@@ -26,6 +26,8 @@ const ResultsScreen = () => {
     { key: 'favorites', title: 'Избранное' }
   ]);
 
+  const headerSearchText = `${location}, ${convertLongDate(checkIn)}, ${nights}  ${createLabel(nights, ['ночь', 'ночи', 'ночей'])}`;
+
   return (
     <View style={styles.container}>
       <View style={[styles.header, paddingTop]}>
@@ -33,9 +35,7 @@ const ResultsScreen = () => {
         <View style={styles.headerInfo}>
           <SearchIcon style={styles.searchIcon} />
 
-          <Text style={headerInfoText}>
-            {`${location}, ${convertLongDate(checkIn)}, ${nights}  ${createLabel(nights, ['ночь', 'ночи', 'ночей'])}`}
-          </Text>
+          <Text style={headerInfoText}>{headerSearchText}</Text>
         </View>
 
       </View>

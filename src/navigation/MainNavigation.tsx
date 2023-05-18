@@ -51,6 +51,7 @@ const MainNavigator = () => {
           name="Home"
           component={HomeScreen}
         />
+
         <Stack.Screen
           options={{ headerShown: false }}
           name="Results"

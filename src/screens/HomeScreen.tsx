@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from 'react-native';
-import { useEffect } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useEffect } from 'react';
 
 import { SearchForm } from '../components/SearchForm';
 import { HotelList } from '../components/HotelList';
@@ -19,13 +19,13 @@ const HomeScreen = ({ navigation } : HomeScreenProps) => {
   const hotels = useAppSelector(selectHotels);
   const isLoading = useAppSelector(selectIsLoading);
 
-  useEffect(() => {
-    dispatch(fetchHotels(searchParams));
-  }, []);
-
   const handleGetHotelsRefresh = () => {
     dispatch(fetchHotels(searchParams));
   };
+
+  useEffect(() => {
+    handleGetHotelsRefresh();
+  }, []);
 
   const navigateToResults = () => navigation.navigate('Results');
 

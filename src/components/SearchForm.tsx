@@ -56,9 +56,7 @@ export const SearchForm: FC<IProps> = ({ navigateToResults }) => {
 
         <View style={styles.inputSection}>
           <Input
-            additionalStyle={{
-              width: 150
-            }}
+            additionalStyle={{ width: 150 }}
             type="number-pad"
             name="nights"
             placeholder="Кол-во дней"

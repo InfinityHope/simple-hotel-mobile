@@ -18,8 +18,8 @@ export const HotelList: FC<IHotelList> = ({ isLoading, hotels, handleOnRefresh }
   }
 
   return (
-    <View style={{ paddingHorizontal: 16 }}>
-      {hotels.length !== 0 ? (
+    <View style={{ paddingHorizontal: 16, flex: 1 }}>
+      {hotels.length ? (
         <FlatList
           keyExtractor={(item) => item.hotelId.toString()}
           data={hotels}
